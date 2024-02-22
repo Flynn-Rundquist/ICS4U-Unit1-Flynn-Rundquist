@@ -30,9 +30,9 @@ let amountOfFood = createSelection([
 
 if (typeOfFood = 'sub') {
   if (amountOfFood = 1) {
-    console.log("The total cook time is 1 minute 0 seconds.")
+    console.log(`The total cook time for ${amountOfFood} ${typeOfFood} is 1 minute 0 seconds.`)
   } else if (amounfOfFood = 2) {
-    console.log("The total cook time is 1 minute 30 seconds.")
+    console.log(`The total cook time for ${amountOfFood} ${typeOfFood}s is 1 minute 30 seconds.`)
   } else if (amountOfFood = 3) {
-    console.log("The total cook time is 2 minutes 0 seconds.")
+    console.log(`The total cook time for ${amountOfFood} ${typeOfFood}s is 2 minutes 0 seconds.`)
   }}
