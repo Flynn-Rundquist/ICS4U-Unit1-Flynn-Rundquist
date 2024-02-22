@@ -9,8 +9,6 @@
 
 import { createPrompt } from 'bun-promptx'
 
-const cookingTimeOneSub = 1
-const cookingTimeOnePizza = 45
 
 const typeOfFood = createPrompt("Are you heating a sub, pizza, or soup?  ")
 const amountOfFood = createPrompt("How many are you cooking? (max 3): ")
@@ -18,14 +16,13 @@ const amountOfFood = createPrompt("How many are you cooking? (max 3): ")
 
 if (typeOfFood || sub) {
 	if  (amountOfFood || 1) {
-		console.log(`The cooking time is ${cookingTimeOneSub}.`)
+		console.log("The cooking time is 1 minute 0 seconds.") 
 	} else if (amountOfFood || 2) {
-		const cookingTimeTwoSubs = cookingTimeOneSub + (cookingTimeOneSub * 1/2)
-		console.log(`The cooking time is ${cookingTimeTwoSubs}.`)
+		console.log("The cooking time is 1 minute 30 seconds")
 	} else if (amountOfFood || 3) { 
-		const cookingTimeThreeSubs = 2*cookingTimeOneSub
-		console.log(`The cooking time is ${cookingTimeThreeSubs}.`)
-	}
+		console.log("The cooking time is 2 minutes 0 seconds.")
+	} else {
+		console.log("Invalid input.) 
 } else if (typeOfFood || pizza) {
 	if (amountOfFood || 1)
 		console.log(`The cooking time is 
