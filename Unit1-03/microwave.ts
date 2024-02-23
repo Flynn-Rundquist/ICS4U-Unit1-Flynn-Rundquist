@@ -16,7 +16,7 @@ let typeOfFood = createSelection([
   { text: 'soup' }
 ], {
   headerText: 'Are you heating a sub, pizza, or soup?: ',
-  perPage:3,
+  perPage: 3,
 })
 
 let amountOfFood = createSelection([
@@ -28,16 +28,21 @@ let amountOfFood = createSelection([
   perPage: 3,
 })
 
-if (typeOfFood = 'sub') {
-  if (amountOfFood === 1) {
-  const cookingTimeMin = 1
-  const cookingTimeSec = 0
-  } else if (amountOfFood === 2) {
-  const cookingTimeMin = 1
-  const cookingTimeSec = 30
-  } else if (amountOfFood === 3) {
-  const cookingTimeMin = 2
-  const cookingTimeSec = 0
-  }}
-  console.log(`The cooking time for ${amountOfFood} ${typeOfFood}(s) is ${cookingTimeMin} minutes ${cookingTimeSec} seconds.`)
-  console.log("\nDone.")
+let cookingTimeMin = 0;
+let cookingTimeSec = 0;
+
+if (typeOfFood === 'sub') {
+  if (amountOfFood.text === '1') {
+    cookingTimeMin = 1;
+    cookingTimeSec = 0;
+  } else if (amountOfFood.text === '2') {
+    cookingTimeMin = 1;
+    cookingTimeSec = 30;
+  } else if (amountOfFood.text === '3') {
+    cookingTimeMin = 2;
+    cookingTimeSec = 0;
+  }
+}
+
+console.log(`The cooking time for ${amountOfFood.text} ${typeOfFood}(s) is ${cookingTimeMin} minutes ${cookingTimeSec} seconds.`);
+console.log("\nDone.");
