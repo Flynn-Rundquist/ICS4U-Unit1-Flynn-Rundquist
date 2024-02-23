@@ -24,15 +24,20 @@ let amountOfFood = createSelection([
   { text: '2' },
   { text: '3' }
 ], {
-  headerText: `How many ${typeOfFood.selected.text}(s) are you cooking? (max 3): `,
+  headerText: `How many ${typeOfFood}(s) are you cooking? (max 3): `,
   perPage: 3,
 })
 
-if (typeOfFood.selected.text = 'sub') {
+if (typeOfFood = 'sub') {
   if (amountOfFood === 1) {
-    console.log(`The total cook time for 1 sub is 1 minute 0 seconds.`)
+  const cookingTimeMin = 1
+  const cookingTimeSec = 0
   } else if (amountOfFood === 2) {
-    console.log(`The total cook time for 2 subs is 1 minute 30 seconds.`)
+  const cookingTimeMin = 1
+  const cookingTimeSec = 30
   } else if (amountOfFood === 3) {
-    console.log(`The total cook time for 3 subs is 2 minutes 0 seconds.`)
+  const cookingTimeMin = 2
+  const cookingTimeSec = 0
   }}
+  console.log(`The cooking time for ${amountOfFood} ${typeOfFood}(s) is ${cookingTimeMin} minutes ${cookingTimeSec} seconds.`)
+  console.log("\nDone.")
