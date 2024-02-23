@@ -24,25 +24,25 @@ let amountOfFood = createSelection([
   { text: '2' },
   { text: '3' }
 ], {
-  headerText: `How many ${typeOfFood}(s) are you cooking? (max 3): `,
+  headerText: `How many ${typeOfFood.text}(s) are you cooking? (max 3): `,
   perPage: 3,
 })
 
-let cookingTimeMin = 0;
-let cookingTimeSec = 0;
+let cookingTimeMin = 0
+let cookingTimeSec = 0
 
-if (typeOfFood === 'sub') {
+if (typeOfFood.text === 'sub') {
   if (amountOfFood.text === '1') {
-    cookingTimeMin = 1;
-    cookingTimeSec = 0;
+    cookingTimeMin = 1
+    cookingTimeSec = 0
+console.log(`The cooking time for ${amountOfFood} ${typeOfFood}(s) is ${cookingTimeMin} minutes ${cookingTimeSec} seconds.`)
   } else if (amountOfFood.text === '2') {
-    cookingTimeMin = 1;
-    cookingTimeSec = 30;
+    cookingTimeMin = 1
+    cookingTimeSec = 30
   } else if (amountOfFood.text === '3') {
-    cookingTimeMin = 2;
-    cookingTimeSec = 0;
+    cookingTimeMin = 2
+    cookingTimeSec = 0
   }
 }
 
-console.log(`The cooking time for ${amountOfFood.text} ${typeOfFood}(s) is ${cookingTimeMin} minutes ${cookingTimeSec} seconds.`);
-console.log("\nDone.");
+console.log(`\nDone.`)
