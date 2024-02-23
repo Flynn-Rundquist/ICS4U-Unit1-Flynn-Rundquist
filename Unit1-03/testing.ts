@@ -10,7 +10,7 @@
 import { createPrompt } from 'bun-promptx'
 import { createSelection } from 'bun-promptx'
 
-const typeOfFood = createSelection([
+let typeOfFood = createSelection([
   { text: 'sub' },
   { text: 'pizza' },
   { text: 'soup' }
@@ -19,7 +19,7 @@ const typeOfFood = createSelection([
   perPage:3,
 })
 
-const amountOfFood = createSelection([
+let amountOfFood = createSelection([
   { text: '1' },
   { text: '2' },
   { text: '3' }
@@ -28,13 +28,5 @@ const amountOfFood = createSelection([
   perPage: 3,
 })
 
-if (typeOfFood.selectedIndex === 0) {
-  console.log("Selected: Sub")
-  if (amountOfFood.selectedIndex === 0) {
-    console.log("Selected: 1")
-    console.log("The total cook time is 1 minute 0 seconds.")
-  } else if (amountOfFood.selectedIndex === 1) {
-    console.log("The total cook time is 1 minute 30 seconds.")
-  } else if (amountOfFood.selectedIndex === 2) {
-    console.log("The total cook time is 2 minutes 0 seconds.")
-  }} 
+console.log(typeOfFood)
+console.log(amountOfFood)
