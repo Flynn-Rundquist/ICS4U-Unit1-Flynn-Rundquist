@@ -9,6 +9,7 @@ s program tells someone how long to microwave
  import { createPrompt } from 'bun-promptx'
  import { createSelection } from 'bun-promptx'
 
+
  const typeOfFood = createSelection([
 	   { text: 'sub' },
 	     { text: 'pizza' },
@@ -37,3 +38,33 @@ s program tells someone how long to microwave
 					     } else if (amountOfFood.selectedIndex === 2) {
 						         console.log("The total cook time is 2 minutes 0 seconds.")
 							   }} 
+
+const typeOfFood = createSelection([
+  { text: 'sub' },
+  { text: 'pizza' },
+  { text: 'soup' }
+], {
+  headerText: 'Are you heating a sub, pizza, or soup?: ',
+  perPage:3,
+})
+
+const amountOfFood = createSelection([
+  { text: '1' },
+  { text: '2' },
+  { text: '3' }
+], {
+  headerText: `How many ${typeOfFood}(s) are you cooking? (max 3): `,
+  perPage: 3,
+})
+
+if (typeOfFood.selectedIndex === 0) {
+  console.log("Selected: Sub")
+  if (amountOfFood.selectedIndex === 0) {
+    console.log("Selected: 1")
+    console.log("The total cook time is 1 minute 0 seconds.")
+  } else if (amountOfFood.selectedIndex === 1) {
+    console.log("The total cook time is 1 minute 30 seconds.")
+  } else if (amountOfFood.selectedIndex === 2) {
+    console.log("The total cook time is 2 minutes 0 seconds.")
+  }} 
+
