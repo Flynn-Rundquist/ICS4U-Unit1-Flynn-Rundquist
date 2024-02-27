@@ -38,3 +38,5 @@ if (typeOfFood.selectedIndex === 0) {
   } else if (amountOfFood.selectedIndex === 2) {
     console.log("The total cook time is 2 minutes 0 seconds.")
   }} 
+
+  console.log("\nDone.")
