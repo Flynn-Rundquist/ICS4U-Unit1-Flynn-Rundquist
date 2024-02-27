@@ -36,8 +36,8 @@ if (userGuess.selectedIndex  > randomNumber - 1) {
         console.log(`You guessed ${userGuess.selectedIndex + 1}. Correct.\n`)
         console.log(`It took you ${counter} attempt(s).`)
         break
-
-}}
+        }
+}
 
 console.log("\nDone.")
 
