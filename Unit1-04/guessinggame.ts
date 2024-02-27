@@ -40,4 +40,3 @@ if (userGuess.selectedIndex  > randomNumber - 1) {
 }
 
 console.log("\nDone.")
-
