@@ -25,12 +25,13 @@ while (true) {
         perPage: 6
 })
 
+console.log(`You guessed ${userGuess.selectedIndex + 1}`)
 
 counter++
 
-if (userGuess > randomNumber) {
+if (userGuess.selectedIndex + 1 > randomNumber) {
         console.log("Too high, try again. \n")
-} else if (userGuess < randomNumber) {
+} else if (userGuess.selectedIndex + 1 < randomNumber) {
         console.log("Too low, try again. \n")
 } else {
         console.log("Correct.\n")
