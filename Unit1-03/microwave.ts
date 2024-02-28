@@ -37,10 +37,8 @@ if (typeOfFood.selectedIndex === 0) {
     console.log("The total cook time is 1 minute 30 seconds.")
   } else if (amountOfFood.selectedIndex === 2) {
     console.log("The total cook time is 2 minutes 0 seconds.")
-  }} 
+  } 
 
-  console.log("\nDone.")
-  }
 } else if (typeOfFood.selectedIndex === 1) {
     console.log("Selected: Pizza")
     if (amountOfFood.selectedIndex === 0) {
