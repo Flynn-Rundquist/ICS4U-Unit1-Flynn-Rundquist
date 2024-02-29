@@ -9,7 +9,7 @@
 
 import { createPrompt } from 'bun-promptx'
 
-const speedOfLight = 2.998e8; // Speed of light (m/s) 
+const speedOfLight = 2.998e8 // Speed of light (m/s) 
 
 // input
 const massOfObjectInput = createPrompt("Enter the mass of object (kg): ")
@@ -18,13 +18,13 @@ const massOfObjectInput = createPrompt("Enter the mass of object (kg): ")
 const massOfObject = parseFloat(massOfObjectInput.value || "-1")
 
 if (isNaN(massOfObject) || massOfObject < 0) {
-     console.log("Invalid input")
-     } else {
-         // process
-             const energyOfObject = massOfObject * Math.pow(speedOfLight, 2)
+  console.log("Invalid input")
+} else {
+  // process
+  const energyOfObject = massOfObject * Math.pow(speedOfLight, 2)
 
-// output
-console.log(`${massOfObject} kg of mass would produce ${energyOfObject.toExponential(3)} J of energy.`)
+  // output
+  console.log(`${massOfObject} kg of mass would produce ${energyOfObject.toExponential(3)} J of energy.`)
 }
 
 console.log("\nDone.")

@@ -40,29 +40,29 @@ if (typeOfFood.selectedIndex === 0) {
   } 
 
 } else if (typeOfFood.selectedIndex === 1) {
-    console.log("Selected: Pizza")
-    if (amountOfFood.selectedIndex === 0) {
+  console.log("Selected: Pizza")
+  if (amountOfFood.selectedIndex === 0) {
     console.log("Selected: 1")
     console.log("The total cook time is 0 minutes 45 seconds.")
-    } else if (amountOfFood.selectedIndex === 1) {
+  } else if (amountOfFood.selectedIndex === 1) {
     console.log("Selected: 2")
     console.log("The total cool time is 1 minute 7.5 seconds.")
-    } else if (amountOfFood.selectedIndex === 2) {
+  } else if (amountOfFood.selectedIndex === 2) {
     console.log("Selected: 2")
     console.log("The total cook time is 1 minute 30 seconds.")
-    } 
+  } 
 } else if (typeOfFood.selectedIndex === 2) {
-    console.log("Selected: Soup")
-    if (amountOfFood.selectedIndex ===0) {
+  console.log("Selected: Soup")
+  if (amountOfFood.selectedIndex ===0) {
     console.log("Selected: 1")
     console.log("The total cook time is 1 minute 45 seconds.")
-    } else if (amountOfFood.selectedIndex === 1) {
+  } else if (amountOfFood.selectedIndex === 1) {
     console.log("Selected: 2")
     console.log("The total cook time is 2 minute 37.5 seconds.")
-    } else if (amountOfFood.selectedIndex === 2) {
+  } else if (amountOfFood.selectedIndex === 2) {
     console.log("Selected: 3")
     console.log("The total cook time is 3 minutes 30 seconds.")
-    }}
+  }}
 
 console.log("\nDone.")
 

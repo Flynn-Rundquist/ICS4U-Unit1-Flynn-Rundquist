@@ -13,29 +13,29 @@ let counter = 0
 const randomNumber = Math.floor(Math.random() * 6) + 1
 
 while (true) {
-    const userGuess = createSelection([
-        { text: '1' },
-        { text: '2' },
-        { text: '3' },
-        { text: '4' },
-        { text: '5' },
-        { text: '6' }
-    ], {
-        headerText: "Guess a number between 1 to 6:",
-        perPage: 6
-    })
+  const userGuess = createSelection([
+    { text: '1' },
+    { text: '2' },
+    { text: '3' },
+    { text: '4' },
+    { text: '5' },
+    { text: '6' }
+  ], {
+    headerText: "Guess a number between 1 to 6:",
+    perPage: 6
+  })
 
-    counter++
+  counter++
 
-    if (userGuess.selectedIndex > randomNumber - 1) {
-        console.log(`You guessed ${userGuess.selectedIndex + 1}. Too high, try again. \n`)
-    } else if (userGuess.selectedIndex < randomNumber - 1) {
-        console.log(`You guessed ${userGuess.selectedIndex + 1}. Too low, try again. \n`)
-    } else {
-        console.log(`You guessed ${userGuess.selectedIndex + 1}. Correct.\n`)
-        console.log(`It took you ${counter} attempt(s).`)
-        break
-    }
+  if (userGuess.selectedIndex > randomNumber - 1) {
+    console.log(`You guessed ${userGuess.selectedIndex + 1}. Too high, try again. \n`)
+  } else if (userGuess.selectedIndex < randomNumber - 1) {
+    console.log(`You guessed ${userGuess.selectedIndex + 1}. Too low, try again. \n`)
+  } else {
+    console.log(`You guessed ${userGuess.selectedIndex + 1}. Correct.\n`)
+    console.log(`It took you ${counter} attempt(s).`)
+    break
+  }
 }
 
 console.log("\nDone.")
