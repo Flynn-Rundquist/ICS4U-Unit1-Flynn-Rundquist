@@ -7,15 +7,6 @@
  * @since 2024-02-29
  */
 
-/**
- * This program shows how to get input
- * and deal with numbers.
- *
- * @author Flynn Rundquist
- * @version 1.0
- * @since 2024-02-29
- */
-
 public class logs {
     public static void main(String[] args) throws Exception {
         System.out.println("\nChoose the length of logs you would like to move with a truck.");
