@@ -6,8 +6,8 @@
  * @version 1.0
  * @since 2024-02-29
  */
-
-public class logs {
+public class Logs {
+    private class Logs() {}
     public static void main(String[] args) throws Exception {
         System.out.println("\nChoose the length of logs you would like to move with a truck.");
         System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
@@ -32,4 +32,3 @@ public class logs {
         System.out.println("\nDone.");
     }
 }
-
