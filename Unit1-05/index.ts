@@ -13,7 +13,6 @@ import { createPrompt } from 'bun-promptx'
 console.log("This program finds out the length of a wooden board that is 1 board foot in dimension.")
 const boardWidthString = createPrompt("Entre width of board (inches): ")
 const boardHeightString = createPrompt("Enter height of board (inches): ")
-const boardFoot = 144
 
 // error checking
 const boardWidth = parseFloat(boardWidthString.value || "-1")
@@ -24,9 +23,9 @@ if (isNaN(boardWidth) == true || isNaN(boardHeight) == true) {
 } else if (boardWidth < 0 || boardHeight < 0) {
   console.log("Invalid input.") 
 } else {
-  // process
-  let boardLength = (12 * boardFoot) / (boardHeight * boardWidth)
-  // output
+  // process and output
+  const boardFoot = 144 
+  const boardLength = (boardFoot) / (boardHeight * boardWidth)
   console.log(`The wood should be ${boardLength} inch(es) long.`)
 }
 
