@@ -9,19 +9,12 @@
 // get arguments
 //
 import { readFileSync } from 'fs';
-//print process.argv
-proccess.argv.forEach(function (val, index, array) {
-})
-
-const file = readFileSynce(proccess.argv[2], 'utf8')
-
-const newArray = file.split(/\r?\n/)
-newArray.pop()
-console.log(newArray)
 
 // Read file and split contents into array
 const fileContents = readFileSync(process.argv[2], 'utf8');
 const newArray = fileContents.trim().split(/\r?\n/);
+
+console.log(newArray);
 
 // Define functions to calculate mean, median, and mode
 function calculateMean(arr: number[]): number {
