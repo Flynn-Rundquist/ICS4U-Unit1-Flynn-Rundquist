@@ -42,3 +42,22 @@ function calculateMedian(arr: number[]): number {
 
 function calculateMode(arr: number[]): number {
         const frequencyMap: { [key: number]: number } = {}
+        let maxFrequency = 0
+        for (const arrayValues of arr) {
+                frequencyMap[arrayValues] = (frequencyMap[arrayValues] || 0) + 1
+                if (frequencyMap[arrayValues] > maxFrequency) {
+                        maxFrequency = frequencyMap[arrayValues]
+                }
+        }
+        const modes: number[] = []
+        for (const arrayValue in frequencyMap) {
+                if (frequencyMap[arrayValues] === maxFrequency) {
+                        modes.push(parseInt(arrayValue)
+                }
+        }
+        return modes
+}
+console.log("The mean is:", calculatedMean(numbers))
+console.log("The median is:", calculatedMedian(numbers))
+console.log("The mode is:" calculatedMode(numbers))
+console.log("\nDone.")
