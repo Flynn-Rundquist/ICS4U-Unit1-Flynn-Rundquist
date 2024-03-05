@@ -19,8 +19,10 @@ console.log(newArray);
 // Define functions to calculate mean, median, and mode
 function calculateMean(arr: number[]): number {
     let sum = 0;
+    let counter = 0
     for (const num of arr) {
-        sum += num;
+        counter++
+        sum += newArray[counter]
     }
     return sum / arr.length;
 }
