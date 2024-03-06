@@ -19,7 +19,7 @@ const userInput = createSelection([
         perPage: 3,
 })
 
-console.log(`Selected: ${options[userInput.selectedIndex + 1]}`)
+console.log(`Selected: ${options[userInput.selectedIndex]}`)
 
 const randomNumber: number = Math.floor(Math.random() * options.length)
 
