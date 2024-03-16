@@ -6,41 +6,43 @@
  * @version 1.0
  * @since 2024-02-29
  */
-
 import java.util.Scanner;
 
-public class Logs {
-    private Logs() {}
+    /**
+     * Utility class for calculating number of logs
+     */
+final class Logs {
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private Logs() {
+        // Private constructor to prevent instantiation
+    }
 
+    /**
+     * Main method to do calculations.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         System.out.println("\nChoose the length of logs you would like to move with a truck.");
         System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
 
         Scanner scanner = new Scanner(System.in);
         double lengthOfLogFloat;
-
-        while (true) {
-            if (scanner.hasNextDouble()) {
-                lengthOfLogFloat = scanner.nextDouble();
-                if (lengthOfLogFloat == 0.25 || lengthOfLogFloat == 0.5 || lengthOfLogFloat == 1.0) {
-                    break;
-                } else {
-                    System.out.println("Invalid input. Please enter one of the following options: 0.25, 0.5, 1.0");
-                    System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
-                }
-            } else {
-                System.out.println("Invalid input. Please enter a valid number.");
-                System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
-                scanner.next(); // consume the invalid input
-            }
-        }
-
         final int capacity = 1100;
         final int weight = 20;
+
+
+    if (lengthOfLogFloat == 0.25 || lengthOfLogFloat == 0.5 || lengthOfLogFloat == 1.0) {
         final double maxLength = (double) capacity / weight;
         final double numberOfLogs = maxLength / lengthOfLogFloat;
-
         System.out.printf("The truck can carry %.2f logs that are %.2f meters long.\n", numberOfLogs, lengthOfLogFloat);
-        System.out.println("\nDone.");
+        break;
+    } else {
+        System.out.println("Invalid input. Please enter one of the following options: 0.25, 0.5, 1.0");
+        break;
     }
-}
+    
+        System.out.println("\nDone.");
+
