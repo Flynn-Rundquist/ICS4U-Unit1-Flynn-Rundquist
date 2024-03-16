@@ -24,25 +24,32 @@ final class Logs {
      *
      * @param args Command line arguments (not used).
      */
+  import java.util.Scanner;
+
+final class Logs {
+    private Logs() {
+        // Private constructor to prevent instantiation
+    }
+
     public static void main(String[] args) {
         System.out.println("\nChoose the length of logs you would like to move with a truck.");
         System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
 
         Scanner scanner = new Scanner(System.in);
-        double lengthOfLogFloat;
+        double lengthOfLogFloat = scanner.nextDouble(); // Take user input
+
         final int capacity = 1100;
         final int weight = 20;
 
-
     if (lengthOfLogFloat == 0.25 || lengthOfLogFloat == 0.5 || lengthOfLogFloat == 1.0) {
-        final double maxLength = (double) capacity / weight;
-        final double numberOfLogs = maxLength / lengthOfLogFloat;
-        System.out.printf("The truck can carry %.2f logs that are %.2f meters long.\n", numberOfLogs, lengthOfLogFloat);
-        break;
+            final double maxLength = (double) capacity / weight;
+            final double numberOfLogs = maxLength / lengthOfLogFloat;
+            System.out.printf("The truck can carry %.2f logs that are %.2f meters long.\n", numberOfLogs, lengthOfLogFloat);
     } else {
-        System.out.println("Invalid input. Please enter one of the following options: 0.25, 0.5, 1.0");
-        break;
+            System.out.println("Invalid input.");
+        }
     }
-    
-        System.out.println("\nDone.");
 
+        System.out.println("\nDone.");
+    }
+}
