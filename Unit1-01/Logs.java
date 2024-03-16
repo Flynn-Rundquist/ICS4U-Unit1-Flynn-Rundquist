@@ -17,7 +17,24 @@ public class Logs {
         System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
 
         Scanner scanner = new Scanner(System.in);
-        double lengthOfLogFloat = scanner.nextDouble();
+        double lengthOfLogFloat;
+
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                lengthOfLogFloat = scanner.nextDouble();
+                if (lengthOfLogFloat == 0.25 || lengthOfLogFloat == 0.5 || lengthOfLogFloat == 1.0) {
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please enter one of the following options: 0.25, 0.5, 1.0");
+                    System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
+                scanner.next(); // consume the invalid input
+            }
+        }
+
         final int capacity = 1100;
         final int weight = 20;
         final double maxLength = (double) capacity / weight;
@@ -27,4 +44,3 @@ public class Logs {
         System.out.println("\nDone.");
     }
 }
-
