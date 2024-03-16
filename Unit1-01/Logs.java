@@ -24,7 +24,6 @@ final class Logs {
      *
      * @param args Command line arguments (not used).
      */
-  import java.util.Scanner;
 
 final class Logs {
     private Logs() {
