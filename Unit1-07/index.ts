@@ -12,11 +12,32 @@
 import * as fs from 'fs';
 
 try {
-    // Read files and split contents
-    const names = fs.readFileSync('./student-names.txt', 'utf-8')
-    const namesArr = names.trim().split(/\r?\n/)
-    const assignments = fs.readFileSync('./assignments.txt', 'utf-8').split('\n')
-    const contentsArr = contents.map(x => x.split(','))
+    // Read student names from file
+    const names = fs.readFileSync('./student-names.txt', 'utf-8');
+    const namesArr = names.trim().split(/\r?\n/);
+
+    // Read assignments from file
+    const assignments = fs.readFileSync('./assignments.txt', 'utf-8').split('\n');
+    const assignmentsArr = assignments.map(assignment => {
+        const [name, weightString] = assignment.split(',');
+        const weight = parseFloat(weightString.trim());
+        return { name, weight };
+    });
 
     // Generate marks for assignments
+    const marks: string[][] = [];
+    namesArr.forEach(studentName => {
+        const studentMarks = assignmentsArr.map(assignment => {
+            const mark = Math.round(Math.random() * 10 + 65); // mean of 75 and standard deviation of 10
+            return `${assignment.name},${mark}`;
+        });
+        marks.push(studentMarks);
+    });
 
+    // Write marks to file
+    const marksCSV = marks.map(studentMarks => studentMarks.join('\n')).join('\n\n');
+    fs.writeFileSync('./marks.csv', marksCSV);
+    console.log('Marks generated successfully.');
+} catch (error) {
+    console.error('Error occurred while reading or writing files:', error);
+}
