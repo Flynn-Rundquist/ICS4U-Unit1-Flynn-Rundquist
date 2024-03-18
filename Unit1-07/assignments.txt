@@ -1,11 +1,10 @@
-Assignment 1,10%
-Assignment 2,15%
-Assignment 3,20%
-Assignment 4,8%
-Assignment 5,12%
-Assignment 6,5%
-Assignment 7,18%
-Assignment 8,7%
-Assignment 9,9%
-Assignment 10,6%
-
+Assignment1,10%
+Assignment2,15%
+Assignment3,20%
+Assignment4,8%
+Assignment5,12%
+Assignment6,5%
+Assignment7,18%
+Assignment8,7%
+Assignment9,9%
+Assignment10,6%
