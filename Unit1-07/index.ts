@@ -76,7 +76,7 @@ try {
     saveMarksToCSV(averages, students)
 
     console.log('Marks generated and saved to marks.csv successfully.')
-    conole.log("\nDone.")
+    console.log("\nDone.")
 } catch (error) {
     console.error('Error occurred while reading or writing files:', error)
 }
