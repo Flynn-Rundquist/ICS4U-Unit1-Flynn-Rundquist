@@ -9,74 +9,55 @@
  * Since: 2024/03/18
  */
 
-import * as fs from 'fs'
+import * as fs from 'fs';
 
 interface Student {
-    name: string
+    name: string;
 }
 
-interface Assignment {
-    name: string
-}
-
-function generateRandomMarks(
-    numStudents: number, 
-    numAssignments: number
-): number[][] {
-    const marks: number[][] = []
-    for (let counter = 0; counter < numStudents; counter++) {
-        const studentMarks: number[] = []
-        for (let counter2 = 0; counter2 < numAssignments; counter2++) {
-            const mark = Math.round(Math.random() * 10 + 65)
-            studentMarks.push(mark)
-        }
-        marks.push(studentMarks)
+function generateRandomMarks(numAssignments: number): number[] {
+    const studentMarks: number[] = [];
+    for (let j = 0; j < numAssignments; j++) {
+        const mark = Math.round(Math.random() * 10 + 65);
+        studentMarks.push(mark);
     }
-    return marks
+    return studentMarks;
 }
 
-function calculateAverages(marks: number[][]): number[] {
-    const averages: number[] = []
-    marks.forEach(studentMarks => {
-        const sum = studentMarks.reduce((acc, curr) => acc + curr, 0)
-        const average = sum / studentMarks.length
-        averages.push(average)
-    })
-    return averages
+function calculateAverage(studentMarks: number[]): number {
+    const sum = studentMarks.reduce((acc, curr) => acc + curr, 0);
+    return sum / studentMarks.length;
 }
 
-function saveMarksToCSV(averages: number[], students: Student[]): void {
-    const header = ['Student', 'Average Mark']
-    const rows: string[] = []
+function saveMarksToCSV(averageMarks: number[], students: Student[]): void {
+    const header = ['Student', 'Average Mark'];
+    const rows: string[] = [];
     students.forEach((student, index) => {
-        const row = [student.name, averages[index].toString()]
-        rows.push(row.join(','))
-    })
-    const csvContent = [header.join(','), ...rows].join('\n')
-    fs.writeFileSync('./marks.csv', csvContent)
+        const row = [student.name, averageMarks[index].toString()];
+        rows.push(row.join(','));
+    });
+    const csvContent = [header.join(','), ...rows].join('\n');
+    fs.writeFileSync('./marks.csv', csvContent);
 }
 
 try {
     const students = fs.readFileSync(process.argv[2], 'utf-8')
         .trim()
         .split(/\r?\n/)
-        .map(name => ({ name }))
+        .map(name => ({ name }));
 
-    const assignments = fs.readFileSync(process.argv[3], 'utf-8')
+    const numAssignments = fs.readFileSync(process.argv[3], 'utf-8')
         .trim()
         .split(/\r?\n/)
-        .map(name => ({ name }))
+        .length;
 
-    const numAssignments = assignments.length
+    const marks = students.map(() => generateRandomMarks(numAssignments));
 
-    const marks = generateRandomMarks(students.length, numAssignments)
+    const averageMarks = marks.map(calculateAverage);
 
-    const averages = calculateAverages(marks)
+    saveMarksToCSV(averageMarks, students);
 
-    saveMarksToCSV(averages, students)
-
-    console.log('Marks generated and saved to marks.csv successfully.')
-    console.log("\nDone.")
+    console.log('Average marks generated and saved to marks.csv successfully.');
 } catch (error) {
-    console.error('Error occurred while reading or writing files:', error)
+    console.error('Error occurred while reading or writing files:', error);
 }
