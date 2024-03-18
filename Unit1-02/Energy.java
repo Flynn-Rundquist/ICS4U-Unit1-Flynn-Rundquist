@@ -25,6 +25,7 @@ final class Energy {
             
             if (mass < 0) {
                 System.out.println("Invalid input! Mass cannot be negative.");
+                System.out.println("\nDone.");
                 System.exit(0); // Exit the program
             }
             
