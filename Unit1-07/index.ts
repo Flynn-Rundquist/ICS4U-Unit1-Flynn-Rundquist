@@ -35,7 +35,7 @@ try {
     });
 
     // Write marks to file
-    const marksCSV = marks.map(studentMarks => studentMarks.join('\n')).join('\n\n');
+    const marksCSV = marks.map(studentMarks => studentMarks.join(',')).join('\n');
     fs.writeFileSync('./marks.csv', marksCSV);
     console.log('Marks generated successfully.');
 } catch (error) {
