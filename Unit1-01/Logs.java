@@ -6,49 +6,60 @@
  * @version 1.0
  * @since 2024-02-29
  */
+
 import java.util.Scanner;
 
-    /**
-     * Utility class for calculating number of logs
-     */
+/**
+* This program calculates the number of logs that can
+* the truck can carry.
+*/
 final class Logs {
     /**
-     * Private constructor to prevent instantiation of this utility class.
-     */
-    private Logs() {
-        // Private constructor to prevent instantiation
-    }
-
-    /**
-     * Main method to do calculations.
+     * Constants.
      *
-     * @param args Command line arguments (not used).
      */
+    public static final double MASS_OF_LOGS = 20.0;
 
-final class Logs {
+    /**
+     * Constants.
+     *
+     */
+    public static final int LOGGING_TRUCK_LIMIT = 1100;
+
+    /**
+    * Prevent instantiation.
+    * Throw an exception IllegalStateException
+    * if this is ever called.
+    *
+    * @throws IllegalStateException if this is ever called
+    */
     private Logs() {
-        // Private constructor to prevent instantiation
+        throw new IllegalStateException("Cannot be instantiated");
     }
 
-    public static void main(String[] args) {
-        System.out.println("\nChoose the length of logs you would like to move with a truck.");
-        System.out.print("Enter length in meters -> 0.25, 0.5, 1.0: ");
+    /**
+    * The starting main() function.
+    *
+    * @param args No args will be used
+    */
+    public static void main(final String[] args) {
+        final Scanner scanner = new Scanner(System.in);
 
-        Scanner scanner = new Scanner(System.in);
-        double lengthOfLogFloat = scanner.nextDouble(); // Take user input
+        // Ask user for the length of maple logs
+        System.out.print("Enter the length of logs in meters -> 0.25, 0.5, 1.0: ");
+        final double logLength = scanner.nextDouble();
 
-        final int capacity = 1100;
-        final int weight = 20;
+        // Calculate the weight of one log based on its length
+        final double logWeight = logLength * MASS_OF_LOGS;
 
-    if (lengthOfLogFloat == 0.25 || lengthOfLogFloat == 0.5 || lengthOfLogFloat == 1.0) {
-            final double maxLength = (double) capacity / weight;
-            final double numberOfLogs = maxLength / lengthOfLogFloat;
-            System.out.printf("The truck can carry %.2f logs that are %.2f meters long.\n", numberOfLogs, lengthOfLogFloat);
-    } else {
-            System.out.println("Invalid input.");
-        }
-    }
+        // Calculate the number of logs that can be placed on the truck
+        final int numOfLogs = (int) (LOGGING_TRUCK_LIMIT / logWeight);
+
+        // Display the result
+        System.out.println("Logs placed on the truck: " + numOfLogs);
 
         System.out.println("\nDone.");
+
+        scanner.close();
     }
 }
