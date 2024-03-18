@@ -46,7 +46,7 @@ final class Energy {
             final double mass = input.nextDouble();
             final double energy = mass * Math.pow(SPEED_OF_LIGHT, 2);
             System.out.println(mass + "kg of mass would produce "
-                            + String.format("%.6e", energy) + "J of energy.");
+                            + String.format("%.3e", energy) + " J of energy.");
             input.close();
         } catch (InputMismatchException ex) {
             System.out.println("Invalid Input!");
