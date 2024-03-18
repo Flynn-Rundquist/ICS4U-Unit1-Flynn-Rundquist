@@ -1,7 +1,7 @@
 /*
  * This program generates a random number
  * and has the player guess.
- * 
+ *
 * @author  Flynn Rundquist
 * @version 1.0
 * @since   2024-03-16
@@ -77,3 +77,4 @@ final class DiceGame {
         System.out.println("\nDone.");
     }
 }
+
