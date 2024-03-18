@@ -1,5 +1,6 @@
 /**
- * This program reads a text file of students, and randomly generate marks
+ * This program reads a text file of students and a text file of assignments, 
+ * and then reads the contents of the files and randomly generate marks
  * with a mean of 75 and a standard deviation of 10, and passes them 
  * back as a 2D array of strings in a file called "marks.csv".
  *
@@ -12,17 +13,10 @@ import * as fs from 'fs';
 
 try {
     // Read files and split contents
-    const contents = fs.readFileSync('./student-names.txt', 'utf-8').split('\n');
+    const names = fs.readFileSync('./student-names.txt', 'utf-8')
+    const namesArr = names.trim().split(/\r?\n/)
+    const assignments = fs.readFileSync('./assignments.txt', 'utf-8').split('\n')
+    const contentsArr = contents.map(x => x.split(','))
 
-    // Generate marks
-    const marks = contents.map((student) => {
-        const mark = Math.round(Math.random() * 10 + 65); // mean of 75 and standard deviation of 10
-        return `${student},${mark}`;
-    }).join('\n');
+    // Generate marks for assignments
 
-    // Write marks to file
-    fs.writeFileSync('./marks.csv', marks);
-    console.log('Marks generated successfully.');
-} catch (error) {
-    console.error('Error occurred while reading or writing files:', error);
-}
