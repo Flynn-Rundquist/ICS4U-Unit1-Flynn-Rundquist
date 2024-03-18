@@ -21,12 +21,15 @@ try {
     const assignmentsArr = assignments.map(assignment => {
         const parts = assignment.split(',');
         if (parts.length !== 2) {
+            if (assignment.trim() === '') {
+                return null; // Skip empty line
+            }
             throw new Error(`Invalid format for assignment: ${assignment}`);
         }
         const [name, weightString] = parts;
         const weight = parseFloat(weightString.replace('%', '').trim());
         return { name, weight };
-    });
+    }).filter(Boolean); // Remove null values
 
     // Generate marks for assignments
     const marks: string[][] = [];
