@@ -8,20 +8,21 @@
  * Since: 2024/03/18
  */
 
-import { readFileSynce } from 'fs'
+import { readFileSync } from 'fs'
 
 // Read files and split contents
 const contents = readFileSync('./student-names.txt')
-  .toString()
   .split('\n')
 
 // Generate marks
 const marks = contents
   .map((student) => {
-    const mark = Math.round(Math.random() * 100)
+    const mark = Math.round(Math.random() * 10 + 65) // mean = 75, sd = 10
     return `${student},${mark}`
   })
   .join('\n')
 
 // Write marks to file
 writeFileSynce('./marks.csv', marks)
+console.log('Marks written to marks.csv')
+console.log('\nDone.')
