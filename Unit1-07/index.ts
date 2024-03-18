@@ -11,40 +11,55 @@
 
 import * as fs from 'fs';
 
+interface Student {
+    name: string;
+}
+
+interface Assignment {
+    name: string;
+}
+
+function generateRandomMarks(numStudents: number, numAssignments: number): number[][] {
+    const marks: number[][] = [];
+    for (let i = 0; i < numStudents; i++) {
+        const studentMarks: number[] = [];
+        for (let j = 0; j < numAssignments; j++) {
+            const mark = Math.round(Math.random() * 10 + 65); // mean of 75 and standard deviation of 10
+            studentMarks.push(mark);
+        }
+        marks.push(studentMarks);
+    }
+    return marks;
+}
+
+function saveMarksToCSV(marks: string[][], students: Student[], assignments: Assignment[]): void {
+    const header = ['Student/Assignment', ...assignments.map(assignment => assignment.name)];
+    const rows: string[] = [];
+    students.forEach((student, index) => {
+        const row = [student.name, ...marks[index]];
+        rows.push(row.join(','));
+    });
+    const csvContent = [header.join(','), ...rows].join('\n');
+    fs.writeFileSync('./marks.csv', csvContent);
+}
+
 try {
-    // Read student names from file
-    const names = fs.readFileSync('./student-names.txt', 'utf-8');
-    const namesArr = names.trim().split(/\r?\n/);
+    // Read students from file
+    const students = fs.readFileSync(process.argv[2], 'utf-8').trim().split(/\r?\n/).map(name => ({ name }));
 
     // Read assignments from file
-    const assignments = fs.readFileSync('./assignments.txt', 'utf-8').split('\n');
-    const assignmentsArr = assignments.map(assignment => {
-        const parts = assignment.split(',');
-        if (parts.length !== 2) {
-            if (assignment.trim() === '') {
-                return null; // Skip empty line
-            }
-            throw new Error(`Invalid format for assignment: ${assignment}`);
-        }
-        const [name, weightString] = parts;
-        const weight = parseFloat(weightString.replace('%', '').trim());
-        return { name, weight };
-    }).filter(Boolean); // Remove null values
+    const assignments = fs.readFileSync(process.argv[3], 'utf-8').trim().split(/\r?\n/).map(name => ({ name }));
 
-    // Generate marks for assignments
-    const marks: string[][] = [];
-    namesArr.forEach(studentName => {
-        const studentMarks = assignmentsArr.map(assignment => {
-            const mark = Math.round(Math.random() * 10 + 65); // mean of 75 and standard deviation of 10
-            return `${assignment.name},${mark}`;
-        });
-        marks.push(studentMarks);
-    });
+    // Generate random marks
+    const marks = generateRandomMarks(students.length, assignments.length);
 
-    // Write marks to file
-    const marksCSV = marks.map(studentMarks => studentMarks.join(',')).join('\n');
-    fs.writeFileSync('./marks.csv', marksCSV);
-    console.log('Marks generated successfully.');
+    // Convert marks to string array
+    const marksStr = marks.map(studentMarks => studentMarks.map(mark => mark.toString()));
+
+    // Save marks to CSV
+    saveMarksToCSV(marksStr, students, assignments);
+
+    console.log('Marks generated and saved to marks.csv successfully.');
 } catch (error) {
     console.error('Error occurred while reading or writing files:', error);
 }
