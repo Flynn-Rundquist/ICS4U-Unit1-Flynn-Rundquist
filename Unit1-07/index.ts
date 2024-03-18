@@ -8,21 +8,21 @@
  * Since: 2024/03/18
  */
 
-import { readFileSync } from 'fs'
+import * as fs from 'fs';
 
-// Read files and split contents
-const contents = readFileSync('./student-names.txt')
-  .split('\n')
+try {
+    // Read files and split contents
+    const contents = fs.readFileSync('./student-names.txt', 'utf-8').split('\n');
 
-// Generate marks
-const marks = contents
-  .map((student) => {
-    const mark = Math.round(Math.random() * 10 + 65) // mean = 75, sd = 10
-    return `${student},${mark}`
-  })
-  .join('\n')
+    // Generate marks
+    const marks = contents.map((student) => {
+        const mark = Math.round(Math.random() * 10 + 65); // mean of 75 and standard deviation of 10
+        return `${student},${mark}`;
+    }).join('\n');
 
-// Write marks to file
-writeFileSynce('./marks.csv', marks)
-console.log('Marks written to marks.csv')
-console.log('\nDone.')
+    // Write marks to file
+    fs.writeFileSync('./marks.csv', marks);
+    console.log('Marks generated successfully.');
+} catch (error) {
+    console.error('Error occurred while reading or writing files:', error);
+}
