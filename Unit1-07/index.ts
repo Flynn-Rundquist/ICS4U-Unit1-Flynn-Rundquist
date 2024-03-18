@@ -19,8 +19,12 @@ try {
     // Read assignments from file
     const assignments = fs.readFileSync('./assignments.txt', 'utf-8').split('\n');
     const assignmentsArr = assignments.map(assignment => {
-        const [name, weightString] = assignment.split(',');
-        const weight = parseFloat(weightString.trim());
+        const parts = assignment.split(',');
+        if (parts.length !== 2) {
+            throw new Error(`Invalid format for assignment: ${assignment}`);
+        }
+        const [name, weightString] = parts;
+        const weight = parseFloat(weightString.replace('%', '').trim());
         return { name, weight };
     });
 
