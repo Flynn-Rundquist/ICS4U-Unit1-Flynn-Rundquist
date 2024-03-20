@@ -35,14 +35,14 @@ const marks: Mark[] = students.map(student => ({
 }))
 
 // Calculate average mark for each student
-const averageMarks: { student: string; averageMark: number }[] = marks.map(({ student, marks }) => ({
+const averageMarks: { student: string; averageMark: string }[] = marks.map(({ student, marks }) => ({
   student,
-  averageMark: marks.reduce((sum, mark) => sum + mark, 0) / marks.length
+  averageMark: (marks.reduce((sum, mark) => sum + mark, 0) / marks.length).toFixed(2)
 }))
 
 // Write results to marks.csv
 const csvContent: string = averageMarks.map(({ student, averageMark }) => `${student},${averageMark}`).join("\n")
-fs.writeFileSync("marks.csv", csvContent + "\n")
+fs.writeFileSync("marks.csv", csvContent)
 
 console.log("Marks.csv created successfully.")
 console.log("\nDone.")
