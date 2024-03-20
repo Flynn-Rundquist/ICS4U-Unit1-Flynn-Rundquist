@@ -14,69 +14,131 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents a student.
+ */
 class Student {
     private String name;
     private int overallGrade;
 
+    /**
+     * Constructs a student with the given name.
+     * @param name The name of the student.
+     */
     public Student(String name) {
         this.name = name;
         this.overallGrade = 0;
     }
 
+    /**
+     * Gets the name of the student.
+     * @return The name of the student.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the overall grade of the student.
+     * @return The overall grade of the student.
+     */
     public int getOverallGrade() {
         return overallGrade;
     }
 
+    /**
+     * Adds a grade to the student's overall grade.
+     * @param grade The grade to add.
+     */
     public void addGrade(int grade) {
         overallGrade += grade;
     }
 
+    /**
+     * Calculates the average grade of the student.
+     * @param totalAssignments The total number of assignments.
+     */
     public void calculateAverageGrade(int totalAssignments) {
         overallGrade /= totalAssignments;
     }
 }
 
+/**
+ * Represents an assignment.
+ */
 class Assignment {
     private String name;
 
+    /**
+     * Constructs an assignment with the given name.
+     * @param name The name of the assignment.
+     */
     public Assignment(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the name of the assignment.
+     * @return The name of the assignment.
+     */
     public String getName() {
         return name;
     }
 }
 
+/**
+ * Represents a mark for a student on an assignment.
+ */
 class Mark {
     private Student student;
     private Assignment assignment;
     private int mark;
 
+    /**
+     * Constructs a mark for a student on an assignment.
+     * @param student The student.
+     * @param assignment The assignment.
+     * @param mark The mark.
+     */
     public Mark(Student student, Assignment assignment, int mark) {
         this.student = student;
         this.assignment = assignment;
         this.mark = mark;
     }
 
+    /**
+     * Gets the student.
+     * @return The student.
+     */
     public Student getStudent() {
         return student;
     }
 
+    /**
+     * Gets the assignment.
+     * @return The assignment.
+     */
     public Assignment getAssignment() {
         return assignment;
     }
 
+    /**
+     * Gets the mark.
+     * @return The mark.
+     */
     public int getMark() {
         return mark;
     }
 }
 
+/**
+ * Generates marks for students and calculates their overall grades.
+ */
 public class MarksGenerator {
+    /**
+     * Main method to generate marks and calculate overall grades.
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         try {
             List<String> studentNames = Files.readAllLines(Paths.get("student-names.txt"));
