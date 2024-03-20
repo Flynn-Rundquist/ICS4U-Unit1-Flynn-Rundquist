@@ -141,9 +141,10 @@ public class MarksGenerator {
      */
     public static void main(String[] args) {
         try {
-            List<String> studentNames = Files.readAllLines(Paths.get("student-names.txt"));
-            List<String> assignmentNames = Files.readAllLines(Paths.get("assignments.txt"));
-
+            List<String> studentNames = Files.readAllLines(
+        Paths.get("student-names.txt"));
+List<String> assignmentNames = Files.readAllLines(
+        Paths.get("assignments.txt"));
             List<Student> students = new ArrayList<>();
             for (String name : studentNames) {
                 students.add(new Student(name.trim()));
@@ -158,7 +159,7 @@ public class MarksGenerator {
             Random random = new Random();
             for (Student student : students) {
                 for (Assignment assignment : assignments) {
-                    int mark = random.nextInt(31) + 70; // Generate random mark between 70 and 100
+                    int mark = random.nextInt(31) + 70;
                     marks.add(new Mark(student, assignment, mark));
                     student.addGrade(mark);
                 }
@@ -168,7 +169,8 @@ public class MarksGenerator {
             // Write results to marks.csv
             StringBuilder csvContent = new StringBuilder();
             for (Student student : students) {
-                csvContent.append(student.getName()).append(",").append(student.getOverallGrade()).append("\n");
+                csvContent.append(student.getName()).append(",")
+                  .append(student.getOverallGrade()).append("\n");
             }
             Files.write(Paths.get("marks.csv"), csvContent.toString().getBytes());
 
