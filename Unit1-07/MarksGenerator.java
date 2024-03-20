@@ -16,13 +16,27 @@ import java.util.Random;
 
 class Student {
     private String name;
+    private int overallGrade;
 
     public Student(String name) {
         this.name = name;
+        this.overallGrade = 0;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getOverallGrade() {
+        return overallGrade;
+    }
+
+    public void addGrade(int grade) {
+        overallGrade += grade;
+    }
+
+    public void calculateAverageGrade(int totalAssignments) {
+        overallGrade /= totalAssignments;
     }
 }
 
@@ -84,14 +98,15 @@ public class MarksGenerator {
                 for (Assignment assignment : assignments) {
                     int mark = random.nextInt(31) + 70; // Generate random mark between 70 and 100
                     marks.add(new Mark(student, assignment, mark));
+                    student.addGrade(mark);
                 }
+                student.calculateAverageGrade(assignments.size());
             }
 
             // Write results to marks.csv
             StringBuilder csvContent = new StringBuilder();
-            for (Mark mark : marks) {
-                csvContent.append(mark.getStudent().getName()).append(",").append(mark.getAssignment().getName())
-                        .append(",").append(mark.getMark()).append("\n");
+            for (Student student : students) {
+                csvContent.append(student.getName()).append(",").append(student.getOverallGrade()).append("\n");
             }
             Files.write(Paths.get("marks.csv"), csvContent.toString().getBytes());
 
@@ -102,4 +117,3 @@ public class MarksGenerator {
         }
     }
 }
-
