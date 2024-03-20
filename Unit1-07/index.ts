@@ -17,7 +17,6 @@ interface Mark {
   mark: number
 }
 
-const fs = new FileSystem()
 const marks: Mark[] = []
 
 const students = fs.readFileSync("student-names.txt")
@@ -42,4 +41,3 @@ fs.writeFileSync("marks.csv", JSON.stringify(marks))
 
 console.log("Marks.csv created successfully.")
 console.log("\nDone.")
-
