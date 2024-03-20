@@ -1,43 +1,48 @@
 /**
- * This program reads a text file of students and a text file of assignments, 
- * and then reads the contents of the files and randomly generate marks
- * with a mean of 75 and a standard deviation of 10, and passes them 
- * back as a 2D array of strings in a file called "marks.csv".
+ * This program reads a text file of students and a text file of assignments,
+ * and then reads the contents of the files and randomly generates marks
+ * with a mean of 75 and a standard deviation of 10. It then calculates the
+ * average mark for each student and saves the results to a file called "marks.csv".
  *
  * By: Flynn Rundquist
  * Version: 1.0
  * Since: 2024/03/18
  */
 
-import * as fs from "fs"
+import * as fs from "fs";
 
 interface Mark {
-  student: string
-  assignment: string
-  mark: number
+  student: string;
+  marks: number[];
 }
 
-const marks: Mark[] = []
-
-const students = fs.readFileSync("student-names.txt")
+// Read student names from file
+const students: string[] = fs.readFileSync("student-names.txt")
   .toString()
   .split("\n")
+  .map(name => name.trim());
 
-const assignments = fs.readFileSync("assignments.txt")
+// Read assignments from file
+const assignments: string[] = fs.readFileSync("assignments.txt")
   .toString()
   .split("\n")
+  .map(assignment => assignment.trim());
 
-for (let counter = 0; counter < students.length; counter++) {
-  for (let jounter = 0; jounter < assignments.length; jounter++) {
-    marks.push({
-      student: students[counter],
-      assignment: assignments[jounter],
-      mark: Math.random() * 100
-    })
-  }
-}
+// Generate random marks for each student and assignment
+const marks: Mark[] = students.map(student => ({
+  student,
+  marks: assignments.map(() => Math.round(Math.random() * 10 + 70)) // Mean of 75, StdDev of 10
+}));
 
-fs.writeFileSync("marks.csv", JSON.stringify(marks))
+// Calculate average mark for each student
+const averageMarks: { student: string; averageMark: number }[] = marks.map(({ student, marks }) => ({
+  student,
+  averageMark: marks.reduce((sum, mark) => sum + mark, 0) / marks.length
+}));
 
-console.log("Marks.csv created successfully.")
-console.log("\nDone.")
+// Write results to marks.csv
+const csvContent: string = averageMarks.map(({ student, averageMark }) => `${student},${averageMark}`).join("\n");
+fs.writeFileSync("marks.csv", csvContent);
+
+console.log("Marks.csv created successfully.");
+console.log("\nDone.");
